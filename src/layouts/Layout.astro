@@ -1,34 +1,54 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import '../styles/globals.css';  
-
+import '../styles/globals.css';
 ---
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TON_ID"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TON_ID');
-</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Nassgo - Solutions digitales innovantes">
-  <title>Nassgo - <slot name="title" /></title>
+  <meta name="description" content="NASS GO - Expert en rénovation en Belgique. Maçonnerie, électricité, plomberie, carrelage, peinture. Devis gratuit sous 48h. Tél: 0467 62 97 96">
+  
+  <title>NASS GO Rénovation - <slot name="title">Accueil</slot></title>
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
 </head>
-<body class="min-h-screen flex flex-col font-sans">
+<body class="min-h-screen flex flex-col font-sans text-gray-900 antialiased">
+  
   <Header />
-  <main class="flex-grow">
+  
+  <main id="main-content" class="flex-grow">
     <slot />
   </main>
+  
   <Footer />
+  
+  <!-- Scripts JavaScript -->
+  <script>
+    // Gestion du menu mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Ferme le menu en cliquant à l'extérieur
+        document.addEventListener('click', function(event) {
+          if (!menuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.add('hidden');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
