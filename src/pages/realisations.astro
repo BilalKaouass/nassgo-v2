@@ -1,0 +1,707 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Données des réalisations (à remplacer par tes vraies photos et descriptions)
+const projets = [
+  {
+    id: 1,
+    titre: "Rénovation complète appartement Bruxelles",
+    categorie: "Rénovation complète",
+    description: "Transformation complète d'un appartement de 80m² avec réaménagement des espaces, électricité neuve et salle de bain sur mesure.",
+    date: "2024",
+    lieu: "Bruxelles",
+    duree: "2 mois",
+    surface: "80m²",
+    caracteristiques: ["Salle de bain neuve", "Cuisine équipée", "Électricité aux normes", "Parquet rénové"],
+    imagePlaceholder: "🏠"
+  },
+  {
+    id: 2,
+    titre: "Salle de bain moderne avec spa",
+    categorie: "Plomberie & Sanitaire",
+    description: "Création d'une salle de bain haut de gamme avec spa intégré, carrelage grand format et éclairage LED scénarisé.",
+    date: "2024",
+    lieu: "Wavre",
+    duree: "3 semaines",
+    surface: "12m²",
+    caracteristiques: ["Spa intégré", "Carrelage grand format", "Éclairage LED", "Meuble sur mesure"],
+    imagePlaceholder: "🚿"
+  },
+  {
+    id: 3,
+    titre: "Mise aux normes électrique complète",
+    categorie: "Électricité",
+    description: "Remplacement total de l'installation électrique avec tableau neuf, mise aux normes RGIE et installation domotique.",
+    date: "2023",
+    lieu: "Charleroi",
+    duree: "1 semaine",
+    surface: "110m²",
+    caracteristiques: ["Tableau neuf", "Mise aux normes RGIE", "Domotique", "Éclairage design"],
+    imagePlaceholder: "⚡"
+  },
+  {
+    id: 4,
+    titre: "Extension avec terrasse couverte",
+    categorie: "Maçonnerie",
+    description: "Construction d'une extension de 25m² avec terrasse couverte et ouverture sur le jardin.",
+    date: "2024",
+    lieu: "Namur",
+    duree: "6 semaines",
+    surface: "25m²",
+    caracteristiques: ["Extension maçonnée", "Terrasse couverte", "Baies vitrées", "Chauffage au sol"],
+    imagePlaceholder: "🧱"
+  },
+  {
+    id: 5,
+    titre: "Cuisine équipée sur mesure",
+    categorie: "Menuiserie",
+    description: "Conception et installation d'une cuisine entièrement sur mesure avec îlot central et électroménager intégré.",
+    date: "2023",
+    lieu: "Mons",
+    duree: "4 semaines",
+    surface: "18m²",
+    caracteristiques: ["Cuisine sur mesure", "Îlot central", "Électroménager intégré", "Plan de travail pierre"],
+    imagePlaceholder: "🍳"
+  },
+  {
+    id: 6,
+    titre: "Ravalement de façade traditionnelle",
+    categorie: "Maçonnerie",
+    description: "Rénovation complète d'une façade de maison de maître avec enduits traditionnels et restauration des éléments d'origine.",
+    date: "2024",
+    lieu: "Tournai",
+    duree: "1 mois",
+    surface: "150m²",
+    caracteristiques: ["Enduits traditionnels", "Restauration façade", "Isolation extérieure", "Peinture qualité"],
+    imagePlaceholder: "🎨"
+  }
+];
+
+const categories = [
+  { id: "all", nom: "Tous les projets", icon: "📊", count: 6 },
+  { id: "renovation", nom: "Rénovation complète", icon: "🏠", count: 1 },
+  { id: "plomberie", nom: "Plomberie", icon: "🚿", count: 1 },
+  { id: "electricite", nom: "Électricité", icon: "⚡", count: 1 },
+  { id: "maconnerie", nom: "Maçonnerie", icon: "🧱", count: 2 },
+  { id: "menuiserie", nom: "Menuiserie", icon: "🪚", count: 1 }
+];
+---
+
+<Layout title="Nos Réalisations - NASS GO Rénovation">
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-primary to-primary-dark text-white overflow-hidden">
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Nos Réalisations
+        </h1>
+        <p class="text-xl opacity-90 mb-8">
+          Découvrez une sélection de nos projets de rénovation réalisés en Belgique.
+        </p>
+        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
+          <span class="text-accent">🏆</span>
+          <span>Plus de 50 projets réalisés depuis 2023</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Filtres par catégorie -->
+  <section class="sticky top-20 bg-white/95 backdrop-blur-sm z-40 border-b shadow-sm py-4">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap gap-3 justify-center">
+        {categories.map((categorie) => (
+          <button 
+            data-category={categorie.id}
+            class="filter-btn flex items-center gap-2 px-5 py-3 bg-light text-primary-dark rounded-xl hover:bg-primary hover:text-white transition-all duration-300"
+          >
+            <span class="text-lg">{categorie.icon}</span>
+            <span class="font-semibold">{categorie.nom}</span>
+            <span class="bg-white/30 text-xs px-2 py-1 rounded-full">{categorie.count}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Grille des projets -->
+  <section class="py-20 bg-light">
+    <div class="container mx-auto px-4">
+      <div id="projets-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projets.map((projet) => (
+          <div 
+            data-categories={projet.categorie.toLowerCase().includes('renovation') ? 'renovation' : 
+                            projet.categorie.toLowerCase().includes('plomberie') ? 'plomberie' :
+                            projet.categorie.toLowerCase().includes('électricité') ? 'electricite' :
+                            projet.categorie.toLowerCase().includes('maçonnerie') ? 'maconnerie' :
+                            projet.categorie.toLowerCase().includes('menuiserie') ? 'menuiserie' : 'all'}
+            class="projet-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+          >
+            <!-- Image du projet -->
+            <div class="h-64 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/10"></div>
+              <span class="text-8xl z-10">{projet.imagePlaceholder}</span>
+              
+              <!-- Badge catégorie -->
+              <div class="absolute top-4 left-4 z-20">
+                <span class="px-4 py-2 bg-white/90 backdrop-blur-sm text-primary-dark rounded-full text-sm font-semibold">
+                  {projet.categorie}
+                </span>
+              </div>
+              
+              <!-- Badge année -->
+              <div class="absolute top-4 right-4 z-20">
+                <span class="px-3 py-1 bg-primary text-white rounded-full text-sm">
+                  {projet.date}
+                </span>
+              </div>
+            </div>
+            
+            <!-- Contenu du projet -->
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-primary-dark mb-3 line-clamp-2">
+                {projet.titre}
+              </h3>
+              
+              <p class="text-secondary mb-6 line-clamp-3">
+                {projet.description}
+              </p>
+              
+              <!-- Infos techniques -->
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  <span class="text-sm text-secondary">{projet.lieu}</span>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <span class="text-sm text-secondary">{projet.duree}</span>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                  </svg>
+                  <span class="text-sm text-secondary">{projet.surface}</span>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  <span class="text-sm text-secondary">Terminé</span>
+                </div>
+              </div>
+              
+              <!-- Caractéristiques -->
+              <div class="mb-6">
+                <h4 class="text-sm font-semibold text-primary-dark mb-3">Caractéristiques :</h4>
+                <div class="flex flex-wrap gap-2">
+                  {projet.caracteristiques.slice(0, 3).map((caract) => (
+                    <span class="px-3 py-1 bg-light text-primary-dark text-xs rounded-full">
+                      {caract}
+                    </span>
+                  ))}
+                  {projet.caracteristiques.length > 3 && (
+                    <span class="px-3 py-1 bg-light text-primary-dark text-xs rounded-full">
+                      +{projet.caracteristiques.length - 3} autres
+                    </span>
+                  )}
+                </div>
+              </div>
+              
+              <!-- Bouton détail -->
+              <button 
+                data-project-id={projet.id}
+                class="view-project-btn w-full bg-light text-primary py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition flex items-center justify-center gap-2"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+                Voir les détails
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Message si aucun projet filtré -->
+      <div id="no-projects-message" class="hidden text-center py-20">
+        <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <span class="text-4xl">🔍</span>
+        </div>
+        <h3 class="text-2xl font-bold text-primary-dark mb-4">Aucun projet trouvé</h3>
+        <p class="text-secondary max-w-md mx-auto">
+          Aucun projet ne correspond à cette catégorie. Essayez une autre catégorie ou consultez tous nos projets.
+        </p>
+        <button id="reset-filters" class="mt-6 bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-dark transition">
+          Voir tous les projets
+        </button>
+      </div>
+      
+      <!-- CTA pour plus de projets -->
+      <div class="mt-16 text-center">
+        <p class="text-lg text-secondary mb-8">
+          Vous souhaitez voir plus de réalisations ou discuter d'un projet similaire ?
+        </p>
+        <a href="/contact" class="inline-block bg-primary text-white px-10 py-4 rounded-xl text-lg font-bold hover:bg-primary-dark transition">
+          📞 Discuter de mon projet
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Témoignages clients -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">
+            Témoignages Clients
+          </h2>
+          <p class="text-lg text-secondary max-w-3xl mx-auto">
+            Ce que nos clients disent de leur expérience avec NASS GO.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Témoignage 1 -->
+          <div class="bg-light rounded-2xl p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                <span class="text-2xl">👤</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-primary-dark">Marie D.</h4>
+                <p class="text-sm text-secondary">Bruxelles - Rénovation appartement</p>
+              </div>
+            </div>
+            <div class="text-yellow-400 mb-4">
+              ★★★★★
+            </div>
+            <p class="text-secondary italic">
+              "Excellent travail ! L'équipe a respecté les délais et le budget. Notre appartement est méconnaissable. Je recommande vivement NASS GO."
+            </p>
+          </div>
+          
+          <!-- Témoignage 2 -->
+          <div class="bg-light rounded-2xl p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center">
+                <span class="text-2xl">👤</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-primary-dark">Pierre L.</h4>
+                <p class="text-sm text-secondary">Wavre - Salle de bain</p>
+              </div>
+            </div>
+            <div class="text-yellow-400 mb-4">
+              ★★★★★
+            </div>
+            <p class="text-secondary italic">
+              "Très professionnel. La salle de bain est exactement comme je l'imaginais. Le chef de chantier était très à l'écoute et réactif."
+            </p>
+          </div>
+          
+          <!-- Témoignage 3 -->
+          <div class="bg-light rounded-2xl p-8">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-16 h-16 bg-primary-dark/10 rounded-full flex items-center justify-center">
+                <span class="text-2xl">👤</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-primary-dark">Sophie M.</h4>
+                <p class="text-sm text-secondary">Namur - Extension maison</p>
+              </div>
+            </div>
+            <div class="text-yellow-400 mb-4">
+              ★★★★★
+            </div>
+            <p class="text-secondary italic">
+              "Un suivi impeccable du début à la fin. L'extension a été réalisée dans les temps et la qualité est au rendez-vous. Merci !"
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Processus de réalisation -->
+  <section class="py-20 bg-gradient-to-br from-primary to-primary-dark text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Notre Processus de Réalisation
+          </h2>
+          <p class="text-xl opacity-90 max-w-3xl mx-auto">
+            Comment nous transformons votre vision en réalité, étape par étape.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <span class="text-3xl">💬</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Consultation</h3>
+            <p class="opacity-90 text-sm">Étude de vos besoins et visite sur site gratuite.</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <span class="text-3xl">📋</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Devis & Planning</h3>
+            <p class="opacity-90 text-sm">Devis détaillé et planning précis établi ensemble.</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <span class="text-3xl">👷</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Réalisation</h3>
+            <p class="opacity-90 text-sm">Travaux réalisés par nos artisans avec suivi régulier.</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <span class="text-3xl">✅</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Livraison</h3>
+            <p class="opacity-90 text-sm">Réception des travaux et remise des garanties.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Modal pour les détails du projet -->
+  <div id="project-modal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <!-- Contenu chargé dynamiquement par JavaScript -->
+    </div>
+  </div>
+</Layout>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Filtrage des projets
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.projet-card');
+  const noProjectsMessage = document.getElementById('no-projects-message');
+  const resetFiltersBtn = document.getElementById('reset-filters');
+  const viewProjectBtns = document.querySelectorAll('.view-project-btn');
+  const projectModal = document.getElementById('project-modal');
+  
+  // Données des projets détaillés
+  const projetsDetails = {
+    1: {
+      titre: "Rénovation complète appartement Bruxelles",
+      categorie: "Rénovation complète",
+      description: "Transformation complète d'un appartement de 80m² datant des années 70. Le projet comprenait le réaménagement complet des espaces, la création d'une cuisine ouverte, la rénovation de la salle de bain et la mise aux normes de toute l'installation électrique.",
+      date: "Janvier - Mars 2024",
+      lieu: "Bruxelles (Ixelles)",
+      duree: "2 mois",
+      surface: "80m²",
+      budget: "45 000€",
+      caracteristiques: [
+        "Démolition des cloisons existantes",
+        "Création d'une cuisine ouverte sur séjour",
+        "Salle de bain neuve avec douche à l'italienne",
+        "Électricité neuve aux normes RGIE",
+        "Parquet ancien rénové",
+        "Peinture complète intérieure",
+        "Menuiseries PVC double vitrage"
+      ],
+      challenges: "Travaux en logement occupé, respect des voisins, contraintes de l'immeuble ancien.",
+      solutions: "Planning rigoureux, travaux par phases, coordination avec la copropriété."
+    },
+    2: {
+      titre: "Salle de bain moderne avec spa",
+      categorie: "Plomberie & Sanitaire",
+      description: "Création d'une salle de bain haut de gamme dans une maison individuelle. Le client souhaitait un espace détente avec spa intégré, des matériaux nobles et un éclairage scénarisé.",
+      date: "Novembre 2024",
+      lieu: "Wavre",
+      duree: "3 semaines",
+      surface: "12m²",
+      budget: "18 500€",
+      caracteristiques: [
+        "Spa intégré avec hydromassage",
+        "Carrelage grand format (60x120cm)",
+        "Meuble double vasque sur mesure",
+        "Éclairage LED scénarisé (4 ambiances)",
+        "Robinetterie thermostatique",
+        "Miroir chauffant avec LED",
+        "Rangement intégré"
+      ],
+      challenges: "Intégration du spa nécessitant un renforcement du plancher.",
+      solutions: "Renforcement structurel invisible, étanchéité renforcée, drainage spécial."
+    }
+    // Ajouter les autres projets ici...
+  };
+  
+  // Fonction de filtrage
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const category = this.getAttribute('data-category');
+      
+      // Mise à jour des boutons actifs
+      filterButtons.forEach(btn => {
+        btn.classList.remove('bg-primary', 'text-white');
+        btn.classList.add('bg-light', 'text-primary-dark');
+      });
+      this.classList.remove('bg-light', 'text-primary-dark');
+      this.classList.add('bg-primary', 'text-white');
+      
+      // Filtrage des projets
+      let visibleProjects = 0;
+      
+      projectCards.forEach(card => {
+        const cardCategories = card.getAttribute('data-categories');
+        
+        if (category === 'all' || cardCategories === category) {
+          card.style.display = 'block';
+          visibleProjects++;
+          
+          // Animation d'apparition
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          
+          setTimeout(() => {
+            card.style.transition = 'opacity 0.3s, transform 0.3s';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 10);
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      // Afficher/masquer le message "aucun projet"
+      if (visibleProjects === 0) {
+        noProjectsMessage.classList.remove('hidden');
+      } else {
+        noProjectsMessage.classList.add('hidden');
+      }
+    });
+  });
+  
+  // Réinitialiser les filtres
+  if (resetFiltersBtn) {
+    resetFiltersBtn.addEventListener('click', function() {
+      filterButtons.forEach(btn => {
+        if (btn.getAttribute('data-category') === 'all') {
+          btn.click();
+        }
+      });
+      noProjectsMessage.classList.add('hidden');
+    });
+  }
+  
+  // Ouvrir le modal de détails du projet
+  viewProjectBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const projectId = this.getAttribute('data-project-id');
+      const project = projetsDetails[projectId];
+      
+      if (project) {
+        // Remplir le modal avec les données du projet
+        const modalContent = `
+          <div class="p-8">
+            <div class="flex justify-between items-start mb-6">
+              <div>
+                <h2 class="text-3xl font-bold text-primary-dark mb-2">${project.titre}</h2>
+                <div class="flex flex-wrap gap-3 items-center">
+                  <span class="px-4 py-1 bg-primary/10 text-primary rounded-full">${project.categorie}</span>
+                  <span class="text-secondary">${project.lieu}</span>
+                  <span class="text-secondary">•</span>
+                  <span class="text-secondary">${project.date}</span>
+                </div>
+              </div>
+              <button id="close-modal" class="text-2xl text-gray-500 hover:text-gray-700">×</button>
+            </div>
+            
+            <!-- Image du projet -->
+            <div class="h-96 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl mb-8 flex items-center justify-center">
+              <span class="text-9xl">${project.imagePlaceholder || '🏠'}</span>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+              <div class="lg:col-span-2">
+                <h3 class="text-xl font-bold text-primary-dark mb-4">Description du projet</h3>
+                <p class="text-secondary mb-6">${project.description}</p>
+                
+                <h3 class="text-xl font-bold text-primary-dark mb-4">Caractéristiques techniques</h3>
+                <ul class="grid sm:grid-cols-2 gap-3 mb-8">
+                  ${project.caracteristiques.map(item => `
+                    <li class="flex items-center gap-2">
+                      <svg class="w-5 h-5 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span class="text-secondary">${item}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+                
+                ${project.challenges ? `
+                  <div class="mb-6">
+                    <h3 class="text-xl font-bold text-primary-dark mb-4">Défis rencontrés</h3>
+                    <p class="text-secondary">${project.challenges}</p>
+                  </div>
+                ` : ''}
+                
+                ${project.solutions ? `
+                  <div class="mb-6">
+                    <h3 class="text-xl font-bold text-primary-dark mb-4">Solutions apportées</h3>
+                    <p class="text-secondary">${project.solutions}</p>
+                  </div>
+                ` : ''}
+              </div>
+              
+              <div class="bg-light rounded-xl p-6 h-fit">
+                <h3 class="text-xl font-bold text-primary-dark mb-6">Fiche technique</h3>
+                
+                <div class="space-y-6">
+                  <div>
+                    <h4 class="font-semibold text-primary-dark mb-2">Localisation</h4>
+                    <div class="flex items-center gap-2">
+                      <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      </svg>
+                      <span class="text-secondary">${project.lieu}</span>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 class="font-semibold text-primary-dark mb-2">Surface</h4>
+                    <div class="flex items-center gap-2">
+                      <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+                      </svg>
+                      <span class="text-secondary">${project.surface}</span>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <h4 class="font-semibold text-primary-dark mb-2">Durée</h4>
+                    <div class="flex items-center gap-2">
+                      <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                      <span class="text-secondary">${project.duree}</span>
+                    </div>
+                  </div>
+                  
+                  ${project.budget ? `
+                    <div>
+                      <h4 class="font-semibold text-primary-dark mb-2">Budget</h4>
+                      <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span class="text-secondary">${project.budget}</span>
+                      </div>
+                    </div>
+                  ` : ''}
+                  
+                  <div>
+                    <h4 class="font-semibold text-primary-dark mb-2">Catégorie</h4>
+                    <span class="px-4 py-2 bg-primary/10 text-primary rounded-full">${project.categorie}</span>
+                  </div>
+                </div>
+                
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                  <p class="text-sm text-secondary mb-4">Ce projet vous intéresse ?</p>
+                  <a href="/contact" class="block w-full bg-primary text-white py-3 rounded-lg font-semibold text-center hover:bg-primary-dark transition">
+                    Discuter d'un projet similaire
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        document.querySelector('#project-modal .bg-white').innerHTML = modalContent;
+        projectModal.classList.remove('hidden');
+        
+        // Fermer le modal
+        document.getElementById('close-modal').addEventListener('click', function() {
+          projectModal.classList.add('hidden');
+        });
+      }
+    });
+  });
+  
+  // Fermer le modal en cliquant à l'extérieur
+  projectModal.addEventListener('click', function(e) {
+    if (e.target === projectModal) {
+      projectModal.classList.add('hidden');
+    }
+  });
+  
+  // Fermer le modal avec la touche Échap
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !projectModal.classList.contains('hidden')) {
+      projectModal.classList.add('hidden');
+    }
+  });
+  
+  // Initialiser le filtre "Tous les projets"
+  const allFilterBtn = document.querySelector('[data-category="all"]');
+  if (allFilterBtn) {
+    allFilterBtn.click();
+  }
+});
+</script>
+
+<style>
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Animation pour les cartes de projet */
+.projet-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+/* Scrollbar personnalisée pour le modal */
+#project-modal .bg-white::-webkit-scrollbar {
+  width: 8px;
+}
+
+#project-modal .bg-white::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#project-modal .bg-white::-webkit-scrollbar-thumb {
+  background: #1a6bff;
+  border-radius: 4px;
+}
+
+#project-modal .bg-white::-webkit-scrollbar-thumb:hover {
+  background: #0d4dc2;
+}
+</style>

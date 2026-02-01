@@ -1,11 +1,428 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="NASS GO - Expert en Rénovation Belgique">
+  <!-- Hero Section professionnelle -->
+  <section class="relative min-h-[90vh] flex items-center bg-gradient-to-br from-primary to-primary-dark text-white overflow-hidden">
+    <!-- Overlay plus sombre pour mieux lire le texte -->
+    <div class="absolute inset-0 bg-black/40"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl">
+        <div class="inline-block bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full mb-8">
+          <span class="text-accent font-semibold">🏆 Entreprise certifiée</span>
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          VOTRE PARTENAIRE DE CONFIANCE <br>
+          <span class="text-accent">EN RÉNOVATION</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-10 opacity-95 max-w-3xl">
+          <span class="font-semibold">NASS GO</span> - Expert en maçonnerie, électricité, plomberie, carrelage, peinture, menuiserie et rénovation complète en <span class="font-semibold text-accent">Belgique</span>.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact" class="bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-accent hover:text-white transition duration-300 shadow-lg flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            DEVIS GRATUIT & PERSONNALISÉ
+          </a>
+          <a href="tel:+32467629796" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white hover:text-primary transition duration-300 flex items-center justify-center gap-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            0467 62 97 96
+          </a>
+        </div>
+        
+        <!-- Badges de confiance -->
+        <div class="mt-12 flex flex-wrap gap-4">
+          <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg">
+            <span class="text-accent">✓</span>
+            <span>+10 ans d'expérience</span>
+          </div>
+          <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg">
+            <span class="text-accent">✓</span>
+            <span>Garantie décennale</span>
+          </div>
+          <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg">
+            <span class="text-accent">✓</span>
+            <span>Assuré RC Pro</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Services Section professionnelle -->
+  <section class="py-24 bg-light">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-primary-dark mb-4">NOS DOMAINES D'EXPERTISE</h2>
+        <div class="w-32 h-1 bg-accent mx-auto mb-6"></div>
+        <p class="text-lg text-secondary max-w-3xl mx-auto">
+          Spécialisés dans la rénovation résidentielle et commerciale, nous vous accompagnons de la conception à la réalisation de votre projet en Belgique.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Maçonnerie -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:border-accent/30 transition-all duration-300 group">
+          <div class="h-56 bg-gradient-to-br from-primary/90 to-primary-dark relative overflow-hidden">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="relative h-full flex items-center justify-center">
+              <span class="text-6xl">🧱</span>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-2xl font-bold text-primary-dark">MAÇONNERIE</h3>
+              <span class="text-accent text-2xl">→</span>
+            </div>
+            <p class="text-secondary mb-6 leading-relaxed">
+              Terrassement, fondations, murs porteurs, cloisons et enduits. Notre équipe de maçons qualifiés garantit des travaux durables et conformes aux normes belges.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center text-secondary">
+                <svg class="w-4 h-4 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Terrassement et fondations
+              </li>
+              <li class="flex items-center text-secondary">
+                <svg class="w-4 h-4 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Murs et cloisons
+              </li>
+              <li class="flex items-center text-secondary">
+                <svg class="w-4 h-4 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Enduits et ravalements
+              </li>
+            </ul>
+            <a href="/services/maconnerie" class="inline-flex items-center text-primary font-semibold hover:text-accent group-hover:translate-x-2 transition-transform">
+              Voir nos réalisations
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Électricité -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:border-accent/30 transition-all duration-300 group">
+          <div class="h-56 bg-gradient-to-br from-accent/90 to-primary relative overflow-hidden">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="relative h-full flex items-center justify-center">
+              <span class="text-6xl">⚡</span>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-2xl font-bold text-primary-dark">ÉLECTRICITÉ</h3>
+              <span class="text-accent text-2xl">→</span>
+            </div>
+            <p class="text-secondary mb-6 leading-relaxed">
+              Électricien agréé pour installations neuves, mises aux normes et dépannages. Nous garantissons la sécurité et la conformité de vos installations électriques en Belgique.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center text-secondary">
+                <svg class="w-4 h-4 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Mise aux normes RGIE
+              </li>
+              <li class="flex items-center text-secondary">
+                <svg class="w-4 h-4 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Tableaux électriques
+              </li>
+              <li class="flex items-center text-secondary">
+                <svg class="w-4 h-4 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Éclairage design
+              </li>
+            </ul>
+            <a href="/services/electricite" class="inline-flex items-center text-primary font-semibold hover:text-accent group-hover:translate-x-2 transition-transform">
+              Voir nos réalisations
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Plomberie -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:border-accent/30 transition-all duration-300 group">
+          <div class="h-56 bg-gradient-to-br from-primary-dark/90 to-accent relative overflow-hidden">
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="relative h-full flex items-center justify-center">
+              <span class="text-6xl">🚿</span>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-2xl font-bold text-primary-dark">PLOMBERIE</h3>
+              <span class="text-accent text-2xl">→</span>
+            </div>
+            <p class="text-secondary mb-6 leading-relaxed">
+              Installation et rénovation de réseaux sanitaires et de chauffage. Notre équipe de plombiers certifiés intervient pour tous vos projets, du neuf à la rénovation.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center text-secondary">
+                <svg class="w-4 h-4 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Salles de bain complètes
+              </li>
+              <li class="flex items-center text-secondary">
+                <svg class="w-4 h-4 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Chauffage central
+              </li>
+              <li class="flex items-center text-secondary">
+                <svg class="w-4 h-4 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Dépannage 24h/24
+              </li>
+            </ul>
+            <a href="/services/plomberie" class="inline-flex items-center text-primary font-semibold hover:text-accent group-hover:translate-x-2 transition-transform">
+              Voir nos réalisations
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Services secondaires -->
+      <div class="mt-16">
+        <h3 class="text-3xl font-bold text-center text-primary-dark mb-12">NOS AUTRES PRESTATIONS</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-3xl text-primary mx-auto mb-6">
+              🎨
+            </div>
+            <h4 class="text-xl font-bold text-primary-dark mb-3">PEINTURE</h4>
+            <p class="text-secondary text-sm">Intérieure & extérieure - Finitions impeccables</p>
+          </div>
+          
+          <div class="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+            <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center text-3xl text-accent mx-auto mb-6">
+              🧱
+            </div>
+            <h4 class="text-xl font-bold text-primary-dark mb-3">CARRELAGE</h4>
+            <p class="text-secondary text-sm">Pose technique - Joints parfaits</p>
+          </div>
+          
+          <div class="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+            <div class="w-16 h-16 bg-primary-dark/10 rounded-full flex items-center justify-center text-3xl text-primary-dark mx-auto mb-6">
+              🪚
+            </div>
+            <h4 class="text-xl font-bold text-primary-dark mb-3">MENUISERIE</h4>
+            <p class="text-secondary text-sm">Sur mesure - Bois & PVC</p>
+          </div>
+          
+          <div class="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+            <div class="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-3xl text-white mx-auto mb-6">
+              🏠
+            </div>
+            <h4 class="text-xl font-bold text-primary-dark mb-3">RÉNOVATION</h4>
+            <p class="text-secondary text-sm">Complète - Gestion de projet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Pourquoi nous choisir -->
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-4xl font-bold text-primary-dark mb-8">
+            <span class="text-primary">POURQUOI</span> CHOISIR NASS GO ?
+          </h2>
+          
+          <div class="space-y-8">
+            <div class="flex items-start gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
+                  <span class="text-3xl text-primary">🏆</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-primary-dark mb-3">Expertise & Certification</h4>
+                <p class="text-secondary leading-relaxed">
+                  Notre équipe est composée d'artisans certifiés avec plus de 10 ans d'expérience. Nous respectons scrupuleusement les normes belges en vigueur et sommes assurés RC Pro.
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center">
+                  <span class="text-3xl text-accent">⏱️</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-primary-dark mb-3">Respect des Délais</h4>
+                <p class="text-secondary leading-relaxed">
+                  Nous établissons un planning précis et le respectons. Notre organisation rigoureuse nous permet de livrer vos chantiers dans les temps impartis, sans compromis sur la qualité.
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-6">
+              <div class="flex-shrink-0">
+                <div class="w-16 h-16 bg-primary-dark/10 rounded-2xl flex items-center justify-center">
+                  <span class="text-3xl text-primary-dark">💎</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-primary-dark mb-3">Transparence Totale</h4>
+                <p class="text-secondary leading-relaxed">
+                  Devis détaillé sans surprise, suivi régulier de l'avancement et communication constante. Nous croyons en une relation de confiance avec nos clients en Belgique.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- CTA Devis -->
+        <div class="bg-gradient-to-br from-primary to-primary-dark p-1 rounded-3xl shadow-2xl">
+          <div class="bg-white rounded-3xl p-10">
+            <div class="text-center mb-8">
+              <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-3xl font-bold text-primary-dark mb-4">DEVIS GRATUIT</h3>
+              <p class="text-secondary">
+                Recevez une estimation précise de votre projet sous 48h
+              </p>
+            </div>
+            
+            <div class="space-y-6">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                  <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-primary-dark">100% Gratuit</h4>
+                  <p class="text-sm text-secondary">Sans engagement de votre part</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                  <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-primary-dark">Détaillé & Transparent</h4>
+                  <p class="text-sm text-secondary">Tous les postes budgétaires précisés</p>
+                </div>
+              </div>
+              
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-primary-dark/20 rounded-full flex items-center justify-center">
+                  <svg class="w-5 h-5 text-primary-dark" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold text-primary-dark">Rapide</h4>
+                  <p class="text-sm text-secondary">Sous 48h ouvrées</p>
+                </div>
+              </div>
+            </div>
+            
+            <a href="/contact" class="block w-full bg-gradient-to-r from-primary to-accent text-white text-center py-4 rounded-xl font-bold hover:shadow-lg transition-all duration-300 mt-10">
+              DEMANDER MON DEVIS
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Zone d'intervention -->
+  <section class="py-20 bg-light">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-primary-dark mb-4">NOTRE ZONE D'INTERVENTION</h2>
+      <div class="w-24 h-1 bg-accent mx-auto mb-8"></div>
+      <p class="text-xl text-secondary mb-12 max-w-3xl mx-auto">
+        Nous intervenons dans toute la <span class="font-semibold text-primary">Belgique</span> pour vos projets de rénovation.
+      </p>
+      
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="text-center p-6 bg-primary/5 rounded-xl">
+            <div class="text-2xl mb-4">🏙️</div>
+            <h4 class="font-bold text-primary-dark">Bruxelles</h4>
+          </div>
+          <div class="text-center p-6 bg-accent/5 rounded-xl">
+            <div class="text-2xl mb-4">🏡</div>
+            <h4 class="font-bold text-primary-dark">Brabant Wallon</h4>
+          </div>
+          <div class="text-center p-6 bg-primary/5 rounded-xl">
+            <div class="text-2xl mb-4">🌳</div>
+            <h4 class="font-bold text-primary-dark">Hainaut</h4>
+          </div>
+          <div class="text-center p-6 bg-accent/5 rounded-xl">
+            <div class="text-2xl mb-4">⛰️</div>
+            <h4 class="font-bold text-primary-dark">Namur</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Final -->
+  <section class="py-24 bg-gradient-to-r from-primary-dark to-primary text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-8">
+        PRÊT À DONNER VIE À VOTRE PROJET ?
+      </h2>
+      <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto opacity-95">
+        Contactez-nous dès aujourd'hui pour une consultation gratuite et sans engagement.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center max-w-2xl mx-auto">
+        <a href="/contact" class="bg-white text-primary px-10 py-5 rounded-xl text-xl font-bold hover:bg-accent hover:text-white transition-all duration-300 shadow-2xl flex-1 flex items-center justify-center gap-3">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          DEMANDER UN DEVIS
+        </a>
+        
+        <a href="tel:+32467629796" class="bg-transparent border-2 border-white text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white hover:text-primary transition-all duration-300 flex-1 flex items-center justify-center gap-3">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+          </svg>
+          0467 62 97 96
+        </a>
+      </div>
+      
+      <p class="mt-12 text-lg opacity-90">
+        Ou écrivez-nous à <a href="mailto:contact@nassgo.be" class="text-accent font-bold hover:text-white">contact@nassgo.be</a>
+      </p>
+    </div>
+  </section>
 </Layout>

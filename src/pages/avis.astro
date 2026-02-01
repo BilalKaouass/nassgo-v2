@@ -1,0 +1,457 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const avisClients = [
+  {
+    id: 1,
+    nom: "Marie D.",
+    ville: "Bruxelles",
+    projet: "Rénovation appartement 80m²",
+    date: "Mars 2024",
+    note: 5,
+    commentaire: "Excellent travail ! L'équipe de NASS GO a parfaitement respecté les délais et le budget prévus. Notre appartement des années 70 est maintenant moderne et lumineux. La communication était excellente tout au long du chantier. Je recommande vivement !",
+    pointsFort: ["Respect des délais", "Communication", "Qualité des finitions"],
+    verifie: true
+  },
+  {
+    id: 2,
+    nom: "Pierre L.",
+    ville: "Wavre",
+    projet: "Salle de bain avec spa",
+    date: "Novembre 2024",
+    note: 5,
+    commentaire: "Très professionnel du début à la fin. La salle de bain est exactement comme je l'imaginais, voire mieux. Le spa intégré fonctionne parfaitement et l'éclairage LED crée une ambiance magnifique. Le chef de chantier était toujours disponible pour répondre à mes questions.",
+    pointsFort: ["Professionalisme", "Écoute client", "Matériaux qualité"],
+    verifie: true
+  },
+  {
+    id: 3,
+    nom: "Sophie M.",
+    ville: "Namur",
+    projet: "Extension maison + terrasse",
+    date: "Juillet 2024",
+    note: 5,
+    commentaire: "Un suivi impeccable du début à la fin. L'extension a été réalisée dans les temps malgré quelques imprévus météo. La terrasse couverte est maintenant notre espace préféré. La qualité de construction est excellente et l'équipe était très respectueuse du voisinage.",
+    pointsFort: ["Gestion des imprévus", "Respect voisinage", "Finitions soignées"],
+    verifie: true
+  },
+  {
+    id: 4,
+    nom: "Thomas B.",
+    ville: "Charleroi",
+    projet: "Mise aux normes électrique",
+    date: "Janvier 2024",
+    note: 5,
+    commentaire: "Intervention rapide et efficace pour la mise aux normes de toute notre installation électrique. L'électricien était très compétent et a pris le temps de tout m'expliquer. Le tableau électrique est maintenant aux normes RGIE et beaucoup plus sécurisé. Prix très correct pour la qualité du travail.",
+    pointsFort: ["Rapidité", "Expertise technique", "Transparence tarifaire"],
+    verifie: true
+  },
+  {
+    id: 5,
+    nom: "Julie et Marc R.",
+    ville: "Mons",
+    projet: "Cuisine sur mesure",
+    date: "Septembre 2023",
+    note: 5,
+    commentaire: "Nous sommes ravis de notre nouvelle cuisine ! Elle est parfaitement adaptée à nos besoins et à l'espace disponible. Le menuisier a été à l'écoute de toutes nos demandes et a su nous conseiller judicieusement. Les finitions sont impeccables et l'installation s'est déroulée sans aucun problème.",
+    pointsFort: ["Écoute des besoins", "Conseils pertinents", "Installation propre"],
+    verifie: true
+  },
+  {
+    id: 6,
+    nom: "Philippe G.",
+    ville: "Tournai",
+    projet: "Ravalement de façade",
+    date: "Mai 2024",
+    note: 5,
+    commentaire: "Très bon travail de ravalement sur notre maison de maître. L'équipe a su préserver le caractère traditionnel de la façade tout en apportant une isolation performante. Les voisins nous ont complimentés sur le résultat. Les échafaudages étaient bien sécurisés et le chantier propre.",
+    pointsFort: ["Respect du patrimoine", "Sécurité chantier", "Propreté"],
+    verifie: true
+  }
+];
+
+const stats = {
+  noteMoyenne: 5.0,
+  totalAvis: 48,
+  satisfaction: 100,
+  recommandation: 98
+};
+---
+
+<Layout title="Avis Clients - NASS GO Rénovation">
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-primary to-primary-dark text-white overflow-hidden">
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Avis Clients
+        </h1>
+        <p class="text-xl opacity-90 mb-8">
+          Découvrez ce que nos clients disent de leur expérience avec NASS GO.
+        </p>
+        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
+          <span class="text-accent">⭐</span>
+          <span>Note moyenne : {stats.noteMoyenne}/5 sur {stats.totalAvis} avis</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Statistiques -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="text-5xl font-bold text-primary mb-3">{stats.noteMoyenne}/5</div>
+            <div class="text-yellow-400 text-2xl mb-3">★★★★★</div>
+            <p class="text-secondary">Note moyenne</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-5xl font-bold text-accent mb-3">{stats.totalAvis}+</div>
+            <div class="text-3xl mb-3">👥</div>
+            <p class="text-secondary">Avis vérifiés</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-5xl font-bold text-primary-dark mb-3">{stats.satisfaction}%</div>
+            <div class="text-3xl mb-3">😊</div>
+            <p class="text-secondary">Clients satisfaits</p>
+          </div>
+          
+          <div class="text-center">
+            <div class="text-5xl font-bold text-primary mb-3">{stats.recommandation}%</div>
+            <div class="text-3xl mb-3">👍</div>
+            <p class="text-secondary">Recommanderaient</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Tous les avis -->
+  <section class="py-20 bg-light">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">
+            Tous nos avis clients
+          </h2>
+          <p class="text-lg text-secondary max-w-3xl mx-auto">
+            Des retours authentiques de clients ayant travaillé avec nous.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {avisClients.map((avis) => (
+            <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+              <!-- En-tête avis -->
+              <div class="flex items-start justify-between mb-6">
+                <div class="flex items-center gap-4">
+                  <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
+                    <span class="text-xl">👤</span>
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-primary-dark">{avis.nom}</h3>
+                    <p class="text-sm text-secondary">{avis.ville}</p>
+                  </div>
+                </div>
+                
+                {avis.verifie && (
+                  <span class="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full font-semibold">
+                    ✓ Vérifié
+                  </span>
+                )}
+              </div>
+              
+              <!-- Note -->
+              <div class="flex items-center gap-2 mb-4">
+                <div class="text-yellow-400">
+                  {'★'.repeat(avis.note)}
+                </div>
+                <span class="text-sm text-secondary">{avis.date}</span>
+              </div>
+              
+              <!-- Projet -->
+              <div class="mb-4">
+                <span class="px-3 py-1 bg-light text-primary-dark text-sm rounded-full">
+                  {avis.projet}
+                </span>
+              </div>
+              
+              <!-- Commentaire -->
+              <p class="text-secondary mb-6 italic">
+                "{avis.commentaire}"
+              </p>
+              
+              <!-- Points forts -->
+              <div class="pt-6 border-t border-gray-100">
+                <h4 class="text-sm font-semibold text-primary-dark mb-3">Points forts :</h4>
+                <div class="flex flex-wrap gap-2">
+                  {avis.pointsFort.map((point) => (
+                    <span class="px-3 py-1 bg-primary/5 text-primary text-xs rounded-full">
+                      {point}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <!-- Pagination (simulée) -->
+        <div class="mt-16 flex justify-center">
+          <div class="flex items-center gap-2">
+            <button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-lg hover:bg-primary-dark transition">
+              1
+            </button>
+            <button class="w-10 h-10 flex items-center justify-center bg-light text-primary-dark rounded-lg hover:bg-primary hover:text-white transition">
+              2
+            </button>
+            <button class="w-10 h-10 flex items-center justify-center bg-light text-primary-dark rounded-lg hover:bg-primary hover:text-white transition">
+              3
+            </button>
+            <span class="px-2 text-secondary">...</span>
+            <button class="w-10 h-10 flex items-center justify-center bg-light text-primary-dark rounded-lg hover:bg-primary hover:text-white transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Plateformes d'avis -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">
+            Nous notons aussi sur
+          </h2>
+          <p class="text-lg text-secondary max-w-3xl mx-auto">
+            Retrouvez nos avis sur les plateformes de confiance.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Google -->
+          <div class="bg-light rounded-2xl p-8 text-center">
+            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-3xl">🔍</span>
+            </div>
+            <h3 class="text-2xl font-bold text-primary-dark mb-4">Google</h3>
+            <div class="text-yellow-400 text-2xl mb-4">★★★★★</div>
+            <p class="text-secondary mb-6">Note moyenne 5.0/5</p>
+            <a href="#" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-accent">
+              Voir sur Google
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+          </div>
+          
+          <!-- Facebook -->
+          <div class="bg-light rounded-2xl p-8 text-center">
+            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-3xl">📘</span>
+            </div>
+            <h3 class="text-2xl font-bold text-primary-dark mb-4">Facebook</h3>
+            <div class="text-yellow-400 text-2xl mb-4">★★★★★</div>
+            <p class="text-secondary mb-6">Note moyenne 5.0/5</p>
+            <a href="#" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-accent">
+              Voir sur Facebook
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+          </div>
+          
+          <!-- Trustpilot -->
+          <div class="bg-light rounded-2xl p-8 text-center">
+            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
+              <span class="text-3xl">⭐</span>
+            </div>
+            <h3 class="text-2xl font-bold text-primary-dark mb-4">Trustpilot</h3>
+            <div class="text-yellow-400 text-2xl mb-4">★★★★★</div>
+            <p class="text-secondary mb-6">Note moyenne 5.0/5</p>
+            <a href="#" class="inline-flex items-center gap-2 text-primary font-semibold hover:text-accent">
+              Voir sur Trustpilot
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Comment laisser un avis -->
+  <section class="py-20 bg-gradient-to-br from-primary to-primary-dark text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Vous avez travaillé avec nous ?
+          </h2>
+          <p class="text-xl opacity-90">
+            Partagez votre expérience et aidez d'autres propriétaires à faire le bon choix.
+          </p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-2xl font-bold mb-6">Laisser un avis</h3>
+              <p class="opacity-90 mb-6">
+                Votre retour nous aide à améliorer nos services et guide les futurs clients.
+              </p>
+              <ul class="space-y-4">
+                <li class="flex items-center gap-3">
+                  <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Processus simple et rapide</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Anonymat respecté si souhaité</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Avis publié sous 24h</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="bg-white/20 rounded-xl p-6">
+              <h4 class="text-xl font-bold mb-6">Choisissez une plateforme</h4>
+              <div class="space-y-4">
+                <a href="#" class="flex items-center justify-between p-4 bg-white/10 rounded-lg hover:bg-white/20 transition">
+                  <div class="flex items-center gap-3">
+                    <span class="text-2xl">🔍</span>
+                    <span class="font-semibold">Google Avis</span>
+                  </div>
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </a>
+                
+                <a href="#" class="flex items-center justify-between p-4 bg-white/10 rounded-lg hover:bg-white/20 transition">
+                  <div class="flex items-center gap-3">
+                    <span class="text-2xl">📘</span>
+                    <span class="font-semibold">Facebook</span>
+                  </div>
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </a>
+                
+                <a href="#" class="flex items-center justify-between p-4 bg-white/10 rounded-lg hover:bg-white/20 transition">
+                  <div class="flex items-center gap-3">
+                    <span class="text-2xl">📧</span>
+                    <span class="font-semibold">Par email</span>
+                  </div>
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Avis -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center text-primary-dark mb-12">
+          Questions fréquentes sur nos avis
+        </h2>
+        
+        <div class="space-y-6">
+          <div class="bg-light rounded-xl p-6">
+            <h3 class="text-xl font-bold text-primary-dark mb-3">
+              Les avis sont-ils vérifiés ?
+            </h3>
+            <p class="text-secondary">
+              Oui, nous ne publions que les avis de clients ayant réellement travaillé avec nous. Chaque avis est vérifié avant publication pour garantir son authenticité.
+            </p>
+          </div>
+          
+          <div class="bg-light rounded-xl p-6">
+            <h3 class="text-xl font-bold text-primary-dark mb-3">
+              Puis-je laisser un avis anonyme ?
+            </h3>
+            <p class="text-secondary">
+              Oui, vous pouvez choisir de n'afficher que vos initiales ou "Client NASS GO". Nous respectons toujours votre vie privée.
+            </p>
+          </div>
+          
+          <div class="bg-light rounded-xl p-6">
+            <h3 class="text-xl font-bold text-primary-dark mb-3">
+              Combien de temps pour qu'un avis soit publié ?
+            </h3>
+            <p class="text-secondary">
+              Les avis sont généralement publiés sous 24h après modération. Nous vérifions simplement qu'ils respectent nos conditions d'utilisation.
+            </p>
+          </div>
+          
+          <div class="bg-light rounded-xl p-6">
+            <h3 class="text-xl font-bold text-primary-dark mb-3">
+              Que faire si je ne suis pas satisfait ?
+            </h3>
+            <p class="text-secondary">
+              Contactez-nous directement avant de laisser un avis. Nous nous engageons à résoudre tout problème dans les plus brefs délais. Votre satisfaction est notre priorité.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Final -->
+  <section class="py-20 bg-light">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-12 text-center">
+        <h2 class="text-3xl font-bold text-primary-dark mb-6">
+          Prêt à devenir notre prochain client satisfait ?
+        </h2>
+        <p class="text-lg text-secondary mb-10">
+          Rejoignez nos nombreux clients heureux et confiez-nous votre projet de rénovation.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="/contact" class="bg-primary text-white px-10 py-4 rounded-xl text-lg font-bold hover:bg-primary-dark transition">
+            📝 DEMANDER UN DEVIS
+          </a>
+          <a href="tel:+32467629796" class="bg-light text-primary px-10 py-4 rounded-xl text-lg font-bold hover:bg-accent hover:text-white transition border border-gray-200">
+            📞 0467 62 97 96
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+/* Animation pour les cartes d'avis */
+.bg-white.rounded-2xl {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-white.rounded-2xl:hover {
+  transform: translateY(-5px);
+}
+</style>
