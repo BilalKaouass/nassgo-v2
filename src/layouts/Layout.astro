@@ -15,7 +15,7 @@ const { title = "Expert en Rénovation Belgique" } = Astro.props;
   <meta name="description" content="NASS GO - Expert en rénovation en Belgique. Maçonnerie, électricité, plomberie, carrelage, peinture. Devis gratuit sous 48h. Tél: 0467 62 97 96">
   
   <!-- TITRE CORRIGÉ -->
-  <title>{`NASS GO - ${title}`}</title>
+  <title>{${title}}</title>
   
   <!-- Open Graph / SEO -->
   <meta property="og:title" content={`NASS GO - ${title}`} />
